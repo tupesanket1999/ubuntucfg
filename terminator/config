@@ -1,0 +1,161 @@
+[global_config]
+  borderless = True
+  tab_position = hidden
+  scroll_tabbar = True
+  homogeneous_tabbar = False
+  inactive_color_offset = 1.0
+  enabled_plugins = LaunchpadBugURLHandler, LaunchpadCodeURLHandler, APTURLHandler, TerminatorThemes
+  title_font = Hack Nerd Font Mono 11
+[keybindings]
+[profiles]
+  [[default]]
+    icon_bell = False
+    background_darkness = 0.45
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#aaaaaa"
+    font = Hack Nerd Font 11
+    foreground_color = "#ffffff"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#282828:#2486e2:#0d47a1:#eb4d28:#0073cf:#32b1d5:#2196f3:#ffffff:#888a85:#ffffff:#b8bb26:#c17d11:#0073cf:#d3869b:#0d47a1:#ffffff"
+    use_system_font = False
+  [[MonaLisa]]
+    icon_bell = False
+    background_color = "#120b0d"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#c46c32"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#f7d66a"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#351b0e:#9b291c:#636232:#c36e28:#515c5d:#9b1d29:#588056:#f7d75c:#874228:#ff4331:#b4b264:#ff9566:#9eb2b4:#ff5b6a:#8acd8f:#ffe598"
+    use_system_font = False
+  [[Molokai]]
+    icon_bell = False
+    background_color = "#121212"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#bbbbbb"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#bbbbbb"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#121212:#fa2573:#98e123:#dfd460:#1080d0:#8700ff:#43a8d0:#bbbbbb:#555555:#f6669d:#b1e05f:#fff26d:#00afff:#af87ff:#51ceff:#ffffff"
+    use_system_font = False
+  [[Medallion]]
+    icon_bell = False
+    background_color = "#1d1908"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#d3ba30"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#cac296"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#b64c00:#7c8b16:#d3bd26:#616bb0:#8c5a90:#916c25:#cac29a:#5e5219:#ff9149:#b2ca3b:#ffe54a:#acb8ff:#ffa0ff:#ffbc51:#fed698"
+    use_system_font = False
+  [[Lucy]]
+    icon_bell = False
+    background_color = "#1a1b23"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#af98e6"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#96979b"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#2e3436:#fb7da7:#76c5a4:#e8d56d:#3465a4:#af98e6:#56c9db:#d3d7cf:#555753:#fb7da7:#76c5a4:#e8d56d:#729fcf:#af98e6:#56c9db:#eeeeec"
+    use_system_font = False
+  [[LiquidCarbonTransparentInverse]]
+    icon_bell = False
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#ffffff"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#afc2c2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#bccccd:#ff3030:#559a70:#ccac00:#0099cc:#cc69c8:#7ac4cc:#000000:#ffffff:#ff3030:#559a70:#ccac00:#0099cc:#cc69c8:#7ac4cc:#000000"
+    use_system_font = False
+  [[LiquidCarbonTransparent]]
+    icon_bell = False
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#ffffff"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#afc2c2"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#ff3030:#559a70:#ccac00:#0099cc:#cc69c8:#7ac4cc:#bccccc:#000000:#ff3030:#559a70:#ccac00:#0099cc:#cc69c8:#7ac4cc:#bccccc"
+    use_system_font = False
+  [[IC_Orange_PPL]]
+    icon_bell = False
+    background_color = "#262626"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#fc531d"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#ffcb83"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#c13900:#a4a900:#caaf00:#bd6d00:#fc5e00:#f79500:#ffc88a:#6a4f2a:#ff8c68:#f6ff40:#ffe36e:#ffbe55:#fc874f:#c69752:#fafaff"
+    use_system_font = False
+  [[Belafonte Night]]
+    icon_bell = False
+    background_color = "#20111b"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#968c83"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#968c83"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#20111b:#be100e:#858162:#eaa549:#426a79:#97522c:#989a9c:#968c83:#5e5252:#be100e:#858162:#eaa549:#426a79:#97522c:#989a9c:#d5ccba"
+    use_system_font = False
+  [[CrayonPonyFish]]
+    icon_bell = False
+    background_color = "#150707"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#68525a"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#68525a"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#2b1b1d:#91002b:#579524:#ab311b:#8c87b0:#692f50:#e8a866:#68525a:#3d2b2e:#c5255d:#8dff57:#c8381d:#cfc9ff:#fc6cba:#ffceaf:#b0949d"
+    use_system_font = False
+  [[FunForrest]]
+    icon_bell = False
+    background_color = "#251200"
+    background_darkness = 0.71
+    background_type = transparent
+    cursor_blink = False
+    cursor_color = "#e5591c"
+    font = Hack Nerd Font Mono 11
+    foreground_color = "#dec165"
+    show_titlebar = False
+    scrollbar_position = hidden
+    palette = "#000000:#d6262b:#919c00:#be8a13:#4699a3:#8d4331:#da8213:#ddc265:#7f6a55:#e55a1c:#bfc65a:#ffcb1b:#7cc9cf:#d26349:#e6a96b:#ffeaa3"
+    use_system_font = False
+  [[Default]]
+    cursor_color = "#aaaaaa"
+[layouts]
+  [[default]]
+    [[[window0]]]
+      type = Window
+      parent = ""
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+[plugins]
