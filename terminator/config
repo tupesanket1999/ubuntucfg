@@ -18,7 +18,7 @@
     foreground_color = "#ffffff"
     show_titlebar = False
     scrollbar_position = hidden
-    palette = "#282828:#2486e2:#0d47a1:#eb4d28:#0073cf:#32b1d5:#2196f3:#ffffff:#888a85:#ffffff:#b8bb26:#c17d11:#0073cf:#d3869b:#0d47a1:#ffffff"
+    palette = "#282828:#2486e2:#0d47a1:#eb4d28:#0073cf:#32b1d5:#2196f3:#ffffff:#888a85:#fbfbfb:#b8bb26:#c17d11:#0073cf:#d3869b:#0d47a1:#ffffff"
     use_system_font = False
   [[MonaLisa]]
     icon_bell = False

@@ -14,12 +14,12 @@
 # App you want to start :
 apps=(
  #if you're using urxvt then replace st with that	
- "google-chrome"
+ "brave-browser-stable"
 )
 
 # Which workspace to assign your wanted App :
 workspaces=(
-"2 Chrome"
+"2"
 )
 
 # counter of opened windows
