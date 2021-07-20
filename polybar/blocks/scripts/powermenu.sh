@@ -52,7 +52,7 @@ case $chosen in
 				i3-msg exit
         ;;
     $hibernate)
-			systemctl hibernate
+				echo "root" | sudo -S -k systemctl hibernate
         ;;
 	$lock)
 			i3lock -i ~/Downloads/1612089-1920x1080-ubuntu-dark.png

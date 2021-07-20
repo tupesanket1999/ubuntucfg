@@ -24,7 +24,8 @@ ZSH_DISABLE_COMPFIX=true
 source ~/.zplug/init.zsh
 zplug "b4b4r07/enhancd", use:init.sh
 alias q='exit'
-
+alias v='nvim'
+alias t='terminator'
 # Install plugins if there are plugins that have not been installed
 
 # Then, source plugins and add commands to $PATH
@@ -32,9 +33,14 @@ zplug load
 copy(){
     xsel -b < ./$1
 }
+#13
+export PATH=$PATH:/usr/local/go/bin
+#15
+#export PATH=$PATH:/home/sanket/go/bin
+
+export CLOUDQUERY_EXT_HOME=/home/sanket/gitlocal/uptycs-cloudquery/extension
 
 alias config='/usr/bin/git --git-dir=/home/sanket/.cfg/ --work-tree=/home/sanket'
-
 run(){
        case $1 in 
            *.cpp)   g++ -std=c++17 -Wshadow -Wall $1 -o a.out -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG  && time ./a.out ;;
@@ -49,29 +55,22 @@ frun(){
            *)   echo "'$1' cannot be compiles & run";;
        esac 
 }
+
 if [[ $1 == eval ]]
 then
     "neofetch"
 set --
 fi
 
+###UPTYCS
+export UPTYCS_HOME="/home/sanket/gitlocal/uptycs"
+export UPTYCS_WEB_HOME="/home/sanket/gitlocal/uptycs-web"
+export UPTYCS_USER="stupe"
+export ARTIFACTS_HOME="/home/sanket/gitlocal/artifacts"
+export UPTYCS_HELP_HOME="/home/sanket/gitlocal/uptycs-help"
 
-ex(){
-    case $1 in 
-            *.tar.bz2)  tar xjf $1          ;;
-            *.tar.gz)   tar xzf $1          ;;
-            *.bz2)      bunzip2 $1          ;;
-            *.rar)      unrar x $1          ;;
-            *•gz)       gunzip  $1          ;;
-            *.tar)      tar xf  $1          ;;
-            *.tbz2)     tar xjf $1          ;;
-            *.tgz)      tar xzf $1          ;;
-            *.zip)      unzip   $1          ;;
-            *.Z)        uncompress $1       ;;
-            *.7z)       7z  x $1            ;;
-            *.tar.xz)   tar xf $1           ;;
-        esac
-}
+alias relogindocker='$(aws ecr get-login --region us-east-1 --profile uptycs-dev --no-include-email --registry-ids 267292272963)'
+alias reloginecr='aws-google-auth -p uptycs-dev -k'
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -138,7 +137,7 @@ plugins=(
     zsh-peco-history
 )
 
-ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="false"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -198,6 +197,12 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
+#
+#
+
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
+
 
 findfiles(){
     vim $(fzf)
@@ -214,4 +219,5 @@ bindkey -s 'fd' 'findDir \n'
 
 export ZPLUG_HOME=~/.zplug
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
+export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

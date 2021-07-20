@@ -9,6 +9,7 @@
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
+#set $mod Mod1
 set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -126,39 +127,41 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 gaps inner 10
-workspace $ws1 gaps outer 10
+workspace $ws1 gaps inner 2
+workspace $ws1 gaps outer 0
 
-workspace $ws2 gaps inner 4
-workspace $ws2 gaps outer 2
+workspace $ws2 gaps inner 0
+workspace $ws2 gaps outer 0
 
-workspace $ws5 gaps inner 10
-workspace $ws5 gaps outer 150
+workspace $ws5 gaps inner 2
+workspace $ws5 gaps outer 0
 
-workspace $ws6 gaps inner 10
-workspace $ws6 gaps outer 10
-
-
-workspace $ws7 gaps inner 10
-workspace $ws7 gaps outer 10
+workspace $ws6 gaps inner 2
+workspace $ws6 gaps outer 0
 
 
-workspace $ws8 gaps inner 10
-workspace $ws8 gaps outer 10
+workspace $ws7 gaps inner 2
+workspace $ws7 gaps outer 0
 
 
-workspace $ws9 gaps inner 10
-workspace $ws9 gaps outer 10
+workspace $ws8 gaps inner 2
+workspace $ws8 gaps outer 0
 
 
-workspace $ws10 gaps inner 10
-workspace $ws10 gaps outer 10
+workspace $ws9 gaps inner 2
+workspace $ws9 gaps outer 0
 
-workspace $ws3 gaps inner 10
-workspace $ws3 gaps outer 10
 
-workspace $ws4 gaps inner 10
-workspace $ws4 gaps outer 150
+workspace $ws10 gaps inner 2
+workspace $ws10 gaps outer 0
+
+workspace $ws3 gaps inner 2
+workspace $ws3 gaps outer 0
+
+workspace $ws4 gaps inner 2
+workspace $ws4 gaps outer 0
+
+
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -197,7 +200,6 @@ exec terminator
 assign [class="Slack"] $ws10
 assign [class="Whatsapp-for-linux"] $ws10
 exec slack
-
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -296,14 +298,14 @@ mode "$mode_gaps_outer" {
 
 for_window [title="^dropdown$"] floating enable
 for_window [title="^dropdown$"] move scratchpad
-#for_window [title="^dropdown$"] resize set 23 150
+for_window [title="^dropdown$"] resize set 23 150
 
 exec --no-startup-id terminator -T dropdown -c dropdown
 
-#bindsym $mod+u scratchpad show;
+bindsym $mod+u scratchpad show;
 bindsym $mod+Shift+minus move scratchpad
 
-bindsym $mod + u [title="^dropdown$"] scratchpad show; [title="^dropdown$"] move position center
+#bindsym $mod + u [title="^dropdown$"] scratchpad show; [title="^dropdown$"] move position center
 
 
 #bar{
@@ -315,13 +317,33 @@ exec_always --no-startup-id  ~/.config/i3/alternating_layouts.py
 #exec --no-startup-id i3-msg "workspace 1 Terminals; append_layout ~/.config/i3/layout-MAIN_SCREEN.json"
 #exec --no-startup-id i3-msg "workspace 1 Terminals; append_layout ~/.config/i3/layout-HOME.json"
 exec --no-startup-id ~/.config/i3/inti_work.sh
-exec --no-startup-id ~/.config/i3/batter.sh
+
 bindsym Print exec gnome-screenshot -i
+
 bindsym $mod + Shift + i exec ~/i3-layout-manager/layout_manager.sh
+
 exec redshift
+
 exec_always --no-startup-id  ~/.config/polybar/launch.sh --blocks
+#exec --no-startup-id ~/.config/i3/sit_stright.sh
+
+
+
 exec --no-startup-id dunst 
+
 exec picom --config ~/.config/picom.conf  --experimental-backends -b
+
 exec_always feh --bg-scale ~/.config/i3/walls/wp6719326-anime-room-1920x1080-wallpapers.jpg
+
 bindsym $mod+Shift+e exec ~/.config/polybar/blocks/scripts/powermenu.sh
+
 exec whatsapp-for-linux
+
+
+
+#KDE
+exec --no-startup-id echo "root" | sudo -S -k iptables -I INPUT -p tcp --dport 1714:1764 -j ACCEPT
+exec --no-startup-id echo "root" | sudo -S -k iptables -I INPUT -p udp --dport 1714:1764 -j ACCEPT
+exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
+exec --no-startup-id kdeconnect-indicator
+exec --no-startup-id clipit
