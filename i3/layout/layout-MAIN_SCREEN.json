@@ -1,0 +1,134 @@
+[
+{
+	"border": "pixel",
+		"floating": "auto_off",
+		"fullscreen_mode": 0,
+		"layout": "splith",
+		"percent": null,
+		"type": "con",
+		"nodes": [
+		{
+			"border": "pixel",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "pixel",
+				"floating": "auto_off",
+				"layout": "splith",
+				"percent": 0.5,
+				"type": "con",
+				"nodes": [
+				{
+					"border": "pixel",
+					"current_border_width": 1,
+					"floating": "auto_off",
+					"geometry": {
+						"height": 453,
+						"width": 722,
+						"x": 0,
+						"y": 0
+					},
+					"name": "sanket@sanket:~",
+					"percent": 0.5,
+					"swallows": [
+					{
+						"title": "console"
+					}
+					],
+					"type": "con"
+				},
+				{
+					"border": "pixel",
+					"current_border_width": 1,
+					"floating": "auto_off",
+					"geometry": {
+						"height": 453,
+						"width": 722,
+						"x": 0,
+						"y": 0
+					},
+					"name": "vim todo",
+					"percent": 0.5,
+					"swallows": [
+					{
+						"title": "todo"
+					}
+					],
+					"type": "con"
+				}
+				]
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 1,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 453,
+					"width": 722,
+					"x": 0,
+					"y": 0
+				},
+				"name": "ranger",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"title": "ranger"
+				}
+				],
+				"type": "con"
+			}
+			]
+		},
+		{
+			"border": "pixel",
+			"floating": "auto_off",
+			"layout": "splitv",
+			"percent": 0.5,
+			"type": "con",
+			"nodes": [
+			{
+				"border": "pixel",
+				"current_border_width": 1,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 453,
+					"width": 722,
+					"x": 0,
+					"y": 0
+				},
+				"name": "tty-clock -sbct",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"title": "time"
+				}
+				],
+				"type": "con"
+			},
+			{
+				"border": "pixel",
+				"current_border_width": 1,
+				"floating": "auto_off",
+				"geometry": {
+					"height": 453,
+					"width": 722,
+					"x": 0,
+					"y": 0
+				},
+				"name": "htop",
+				"percent": 0.5,
+				"swallows": [
+				{
+					"title": "htop"
+				}
+				],
+				"type": "con"
+			}
+			]
+		}
+	]
+}
+]

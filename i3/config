@@ -28,13 +28,13 @@ font pango:DejaVu Sans Mono 8
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec  --no-startup-id nm-applet
+exec_always  --no-startup-id nm-applet &
 
 # Use pactl to adjust volume in PulseAudio.
-#set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+#set $refresh_i3status killall -SIGUSR1 i3blocks
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && pkill -RTMIN+10 i3blocks
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && pkill -RTMIN+10 i3blocks
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # Media player controls
@@ -308,15 +308,17 @@ bindsym $mod+Shift+minus move scratchpad
 #bindsym $mod + u [title="^dropdown$"] scratchpad show; [title="^dropdown$"] move position center
 
 
-#bar{
-#    status_command i3status
-#}
+bar{
+    status_command i3blocks
+}
 #
 #
-exec_always --no-startup-id  ~/.config/i3/alternating_layouts.py
+exec_always --no-startup-id  ~/.config/i3/scripts/alternating_layouts.py
 #exec --no-startup-id i3-msg "workspace 1 Terminals; append_layout ~/.config/i3/layout-MAIN_SCREEN.json"
 #exec --no-startup-id i3-msg "workspace 1 Terminals; append_layout ~/.config/i3/layout-HOME.json"
-exec --no-startup-id ~/.config/i3/inti_work.sh
+exec --no-startup-id ~/.config/i3/scripts/inti_work.sh
+
+exec --no-startup-id ~/.config/i3/scripts/fast_cursor.sh
 
 bindsym Print exec gnome-screenshot -i
 
@@ -324,8 +326,8 @@ bindsym $mod + Shift + i exec ~/i3-layout-manager/layout_manager.sh
 
 exec redshift
 
-exec_always --no-startup-id  ~/.config/polybar/launch.sh --blocks
-#exec --no-startup-id ~/.config/i3/sit_stright.sh
+#exec_always --no-startup-id  ~/.config/polybar/launch.sh --blocks
+#exec --no-startup-id ~/.config/i3/scripts/sit_stright.sh
 
 
 
@@ -333,11 +335,15 @@ exec --no-startup-id dunst
 
 exec picom --config ~/.config/picom.conf  --experimental-backends -b
 
-exec_always feh --bg-scale ~/.config/i3/walls/wp6719326-anime-room-1920x1080-wallpapers.jpg
+exec_always feh --bg-scale ~/.config/i3/walls/wp5138901-anime-aesthetic-street-wallpapers.jpg
 
 bindsym $mod+Shift+e exec ~/.config/polybar/blocks/scripts/powermenu.sh
 
 exec whatsapp-for-linux
+
+#MONITOR
+exec --no-startup-id xrandr --output HDMI-1 --set "Broadcast RGB" "Full"
+bindsym $mod+p move workspace to output right
 
 
 
@@ -346,4 +352,10 @@ exec --no-startup-id echo "root" | sudo -S -k iptables -I INPUT -p tcp --dport 1
 exec --no-startup-id echo "root" | sudo -S -k iptables -I INPUT -p udp --dport 1714:1764 -j ACCEPT
 exec --no-startup-id /usr/lib/x86_64-linux-gnu/libexec/kdeconnectd
 exec --no-startup-id kdeconnect-indicator
-exec --no-startup-id clipit
+exec_always --no-startup-id clipit
+
+
+#vertical
+#~/.screenlayout/vertical.sh
+#horizontal
+exec --no-startup-id sleep 5 && ~/.config/i3/scripts/horizontal.sh
