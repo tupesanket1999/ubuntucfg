@@ -19,7 +19,7 @@ apps=(
 
 # Which workspace to assign your wanted App :
 workspaces=(
-"2  Browser "
+"2"
 )
 
 # counter of opened windows
