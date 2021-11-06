@@ -38,15 +38,14 @@ nnoremap <leader>xl <cmd>TroubleToggle loclist<cr>
 nnoremap <leader>xr <cmd>TroubleToggle lsp_references<cr>
 
 "LSPSAGA
-nnoremap <silent>K :Lspsaga hover_doc<CR>
-nnoremap <silent><leader>gh <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
-nnoremap <silent><leader>a :Lspsaga code_action<CR>
-nnoremap <silent><leader>rn :Lspsaga rename<CR>
-nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
-nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
-nnoremap <silent><leader>gr <cmd>lua require"telescope.builtin.lsp".references()<CR>
-nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
-tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
+"nnoremap <silent>K :Lspsaga hover_doc<CR>
+"nnoremap <silent><leader>gh <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+"nnoremap <silent><leader>a :Lspsaga code_action<CR>
+"nnoremap <silent><leader>rn :Lspsaga rename<CR>
+"nnoremap <silent> [e :Lspsaga diagnostic_jump_next<CR>
+"nnoremap <silent> ]e :Lspsaga diagnostic_jump_prev<CR>
+"nnoremap <silent> <A-d> :Lspsaga open_floaterm<CR>
+"tnoremap <silent> <A-d> <C-\><C-n>:Lspsaga close_floaterm<CR>
 
 "AUTO COMPLETE
 inoremap <silent><expr> <C-Space> compe#complete()
@@ -63,11 +62,8 @@ nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr> Find files using Telescope command-line sugar.
 nnoremap <leader>fc <cmd>lua require('telescope.builtin').commands()<cr>
 nnoremap <leader>ps :lua require('telescope.builtin').grep_string({ search = vim.fn.input(" > ")})<CR>
-nnoremap <Leader>pf :lua require('telescope.builtin').find_files()<CR>
 nnoremap <C-p> :lua require('telescope.builtin').git_files()<CR>
+nnoremap <silent><leader>gr <cmd>lua require"telescope.builtin.lsp".references()<CR>
 
 "NERD TREE
 nnoremap <C-n> :NvimTreeToggle<CR>
-nnoremap <leader>r :NvimTreeRefresh<CR>
-nnoremap <leader>n :NvimTreeFindFile<CR>
-

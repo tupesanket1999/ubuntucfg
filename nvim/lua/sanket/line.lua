@@ -1,3 +1,11 @@
+require('bufferline').setup {
+  options = {
+    show_buffer_close_icons = false,
+    show_close_icon = false,
+    separator_style = "thick",
+    diagnostics = "nvim_lsp"
+  }
+}
 local custom_ayu = require'lualine.themes.ayu_dark'
 -- Change the background of lualine_c section for normal mode
 --custom_ayu.normal.a.fg = '#ffffff' -- rgb colors are supported

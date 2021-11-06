@@ -41,4 +41,3 @@ set completeopt=menuone,noselect,noinsert
 "LeaderKey
 "
 let mapleader = " "
-
