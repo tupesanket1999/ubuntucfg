@@ -23,6 +23,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'onsails/lspkind-nvim'
 Plug 'RRethy/vim-illuminate'
 Plug 'folke/lsp-colors.nvim'
+Plug 'mhartington/formatter.nvim'
 
 
 
@@ -32,11 +33,13 @@ Plug 'szw/vim-maximizer'
 Plug 'preservim/nerdcommenter'
 Plug 'mbbill/undotree'
 Plug 'kyazdani42/nvim-tree.lua'
+Plug 'folke/which-key.nvim'
 
 
 "git
 "
 Plug 'lewis6991/gitsigns.nvim'
+Plug 'TimUntersberger/neogit'
 
 "powerline
 "

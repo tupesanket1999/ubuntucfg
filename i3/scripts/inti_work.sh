@@ -14,7 +14,7 @@
 # App you want to start :
 apps=(
  #if you're using urxvt then replace st with that	
- "brave-browser-stable"
+ "brave-browser"
 )
 
 # Which workspace to assign your wanted App :

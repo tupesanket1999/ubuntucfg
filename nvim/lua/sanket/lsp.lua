@@ -1,6 +1,5 @@
 local nvim_lsp = require('lspconfig')
 require'lspconfig'.eslint.setup{}
---require'lspconfig'.efm.setup{}
 require("lsp-colors").setup({
   Error = "#db4b4b",
   Warning = "#e0af68",
@@ -17,8 +16,14 @@ nvim_lsp.tsserver.setup{
 
   -- Mappings.
   local opts = { noremap=true, silent=true }
-  vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
+  --vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
   vim.cmd('autocmd BufWritePre <buffer> EslintFixAll')
+  vim.api.nvim_exec([[
+    augroup FormatAutogroup
+      autocmd!
+      autocmd BufWritePost *.js,*.tsx,*.ts FormatWrite
+    augroup END
+  ]], true)
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap('n', 'gD', '<cmd>lua vim.lsp.buf.declaration()<CR>', opts)
@@ -37,7 +42,7 @@ nvim_lsp.tsserver.setup{
   buf_set_keymap('n', '[d', '<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
   buf_set_keymap('n', ']d', '<cmd>lua vim.lsp.diagnostic.goto_next()<CR>', opts)
   buf_set_keymap('n', '<space>q', '<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>', opts)
-  buf_set_keymap('n', '<space>f', '<cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  buf_set_keymap('n', '<space>f', '<cmd>Format<CR>', opts)
   end
 }
 
@@ -109,3 +114,18 @@ require'lspconfig'.gopls.setup{
     on_attach=on_attach
 }
 
+require('formatter').setup({
+  filetype = {
+    javascript = {
+      -- prettier
+      function()
+        return {
+          exe = "./node_modules/prettier/bin-prettier.js",
+          args = {"--stdin-filepath", vim.fn.fnameescape(vim.api.nvim_buf_get_name(0))},
+          stdin = true
+        }
+      end
+    },
+  }
+})
+require("which-key").setup {}
