@@ -16,7 +16,7 @@ require("telescope").load_extension("fzf")
 require'telescope'.load_extension('project')
 vim.api.nvim_set_keymap(
     'n',
-    '<C-q>',
+    '<space>cp',
     ":lua require'telescope'.extensions.project.project{}<CR>",
     {noremap = true, silent = true}
 )
