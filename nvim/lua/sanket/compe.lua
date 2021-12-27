@@ -58,3 +58,30 @@ vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+require("vim.lsp.protocol").CompletionItemKind = {
+  "", -- Text
+  "ƒ ", -- Method
+  "ƒ ", -- Function
+  " ", -- Constructor
+  "", -- Field
+  "", -- Variable
+  "", -- Class
+  "ﰮ", -- Interface
+  "", -- Module
+  "", -- Property
+  "", -- Unit
+  "", -- Value
+  "了", -- Enum
+  " ", -- Keyword
+  "﬌", -- Snippet
+  " ", -- Color
+  "", -- File
+  "", -- Reference
+  "", -- Folder
+  "", -- EnumMember
+  " ", -- Constant
+  "", -- Struct
+  "", -- Event
+  "ﬦ", -- Operator
+  "" -- TypeParameter
+}

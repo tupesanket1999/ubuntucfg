@@ -2,8 +2,9 @@ require("bufferline").setup {
   options = {
     show_buffer_close_icons = false,
     show_close_icon = false,
-    separator_style = "thick",
-    diagnostics = "nvim_lsp"
+    separator_style = "thin",
+    diagnostics = "nvim_lsp",
+    indicator_icon = ""
   }
 }
 local custom_ayu = require "lualine.themes.ayu_dark"

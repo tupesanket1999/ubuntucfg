@@ -1,17 +1,20 @@
 local nvim_lsp = require("lspconfig")
 require "lspconfig".eslint.setup {}
-require("lspkind").init({})
 require("which-key").setup {}
-require("lsp-colors").setup(
-  {
-    Error = "#db4b4b",
-    Warning = "#e0af68",
-    Information = "#0db9d7",
-    Hint = "#10B981"
-  }
-)
+require("nvim-autopairs").setup {}
 
- --Default Keybindings for lsp
+require("indent_blankline").setup {
+  -- for example, context is off by default, use this to turn it on
+  show_current_context = true,
+  show_current_context_start = true
+}
+
+local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+end
+--Default Keybindings for lsp
 local function keymaps(buf_set_keymap, opts)
   -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -32,6 +35,9 @@ local function keymaps(buf_set_keymap, opts)
   buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
 end
 
+--LSP FOR TSSERVER
+--
+--
 nvim_lsp.tsserver.setup {
   on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
@@ -42,6 +48,7 @@ nvim_lsp.tsserver.setup {
     end
     -- Mappings.
     local opts = {noremap = true, silent = true}
+    --NOT USING INBUIT FORMATTER
     --vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
     vim.cmd("autocmd BufWritePre <buffer> EslintFixAll")
     vim.api.nvim_exec(
@@ -74,6 +81,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
 end
 
+--LSP FOR JSON
+--
+--
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 require "lspconfig".jsonls.setup {
@@ -87,6 +97,10 @@ require "lspconfig".jsonls.setup {
   },
   on_attach = on_attach
 }
+
+--LSP FOR GO LANG
+--
+--
 require "lspconfig".gopls.setup {
   cmd = {"gopls", "serve"},
   settings = {
@@ -101,4 +115,9 @@ require "lspconfig".gopls.setup {
   },
   on_attach = on_attach
 }
+
+--LSP FOR CPP
+--
+--
 require "lspconfig".clangd.setup {on_attach = on_attach}
+require "lspconfig".sumneko_lua.setup {on_attach = on_attach}

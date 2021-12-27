@@ -13,8 +13,8 @@ require("gitsigns").setup {
   keymaps = {
     -- Default keymap options
     noremap = true,
-    ["n ]c"] = {expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns.actions".next_hunk()<CR>\''},
-    ["n [c"] = {expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns.actions".prev_hunk()<CR>\''},
+    ["n ]g"] = {expr = true, '&diff ? \']c\' : \'<cmd>lua require"gitsigns.actions".next_hunk()<CR>\''},
+    ["n [g"] = {expr = true, '&diff ? \'[c\' : \'<cmd>lua require"gitsigns.actions".prev_hunk()<CR>\''},
     ["n <leader>ms"] = '<cmd>lua require"gitsigns".stage_hunk()<CR>',
     ["v <leader>ms"] = '<cmd>lua require"gitsigns".stage_hunk({vim.fn.line("."), vim.fn.line("v")})<CR>',
     ["n <leader>mu"] = '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>',
@@ -60,4 +60,21 @@ require("gitsigns").setup {
   }
 }
 
-require("neogit").setup {}
+require("neogit").setup {
+  integrations = {
+    -- Neogit only provides inline diffs. If you want a more traditional way to look at diffs, you can use `sindrets/diffview.nvim`.
+    -- The diffview integration enables the diff popup, which is a wrapper around `sindrets/diffview.nvim`.
+    --
+    -- Requires you to have `sindrets/diffview.nvim` installed.
+    -- use {
+    --   'TimUntersberger/neogit',
+    --   requires = {
+    --     'nvim-lua/plenary.nvim',
+    --     'sindrets/diffview.nvim'
+    --   }
+    -- }
+    --
+    diffview = true
+  }
+}
+require("diffview").setup {}
