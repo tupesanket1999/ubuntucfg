@@ -32,9 +32,9 @@ set.updatetime = 50
 set.shortmess:append("c")
 vim.wo.colorcolumn = "80"
 set.showtabline = 2
-
 set.completeopt = "menuone,noselect,noinsert"
 
 --"LeaderKey
 --"
 vim.g.mapleader = " "
+vim.o.sessionoptions="blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"

@@ -13,7 +13,6 @@ require("packer").startup(
     use "nvim-telescope/telescope.nvim"
     use "kyazdani42/nvim-web-devicons"
     use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
-    use "nvim-telescope/telescope-project.nvim"
 
     --"lsp
     --"
@@ -32,6 +31,14 @@ require("packer").startup(
     use "kyazdani42/nvim-tree.lua"
     use "folke/which-key.nvim"
     use "lukas-reineke/indent-blankline.nvim"
+    use "lewis6991/impatient.nvim"
+    use {
+      "rmagatti/session-lens",
+      requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
+      config = function()
+        require("session-lens").setup({})
+      end
+    }
 
     --"debugger
     --"

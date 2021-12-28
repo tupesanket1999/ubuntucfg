@@ -3,6 +3,8 @@
 vim.g["gruvbox_invert_selection"] = "0"
 vim.g["gruvbox_contrast_dark"] = "hard"
 vim.o.background = "dark"
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[
+colorscheme gruvbox 
+highlight clear SignColumn]])
 --"transparent
 --vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])

@@ -1,22 +1,12 @@
 local nvim_lsp = require("lspconfig")
-require "lspconfig".eslint.setup {}
-require("which-key").setup {}
-require("nvim-autopairs").setup {}
-
-require("indent_blankline").setup {
-  -- for example, context is off by default, use this to turn it on
-  show_current_context = true,
-  show_current_context_start = true
-}
 
 local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
 end
---Default Keybindings for lsp
+
 local function keymaps(buf_set_keymap, opts)
-  -- See `:help vim.lsp.*` for documentation on any of the below functions
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
   buf_set_keymap("n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
   buf_set_keymap("n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -86,7 +76,7 @@ end
 --
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
-require "lspconfig".jsonls.setup {
+nvim_lsp.jsonls.setup {
   capabilities = capabilities,
   commands = {
     Format = {
@@ -98,10 +88,12 @@ require "lspconfig".jsonls.setup {
   on_attach = on_attach
 }
 
+
+
 --LSP FOR GO LANG
 --
 --
-require "lspconfig".gopls.setup {
+nvim_lsp.gopls.setup {
   cmd = {"gopls", "serve"},
   settings = {
     gopls = {
@@ -116,8 +108,20 @@ require "lspconfig".gopls.setup {
   on_attach = on_attach
 }
 
+
 --LSP FOR CPP
 --
 --
-require "lspconfig".clangd.setup {on_attach = on_attach}
-require "lspconfig".sumneko_lua.setup {on_attach = on_attach}
+nvim_lsp.clangd.setup {on_attach = on_attach}
+
+
+--LSP FOR LUA
+--
+--
+nvim_lsp.sumneko_lua.setup {on_attach = on_attach}
+
+
+--LSP FOR ESLINT
+--
+--
+nvim_lsp.eslint.setup {}
