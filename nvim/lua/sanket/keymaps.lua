@@ -20,6 +20,7 @@ map("n", "<Leader>-", ":vertical resize -5<CR>", {noremap = true})
 map("n", "<C-w>s", ":belowright split<CR>", {noremap = true})
 map("n", "<C-w>v", ":belowright vsplit<CR>", {noremap = true})
 map("n", "<leader>t", ":terminal<CR>", {noremap = true})
+map("n", "<leader>u", ":UndotreeShow<CR>", {noremap = true})
 
 --"TERMINAL
 map("t", "<Esc>", "<C-\\><C-n>")
