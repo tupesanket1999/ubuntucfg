@@ -220,4 +220,5 @@ bindkey -s 'fd' 'findDir \n'
 export ZPLUG_HOME=~/.zplug
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
+
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -68,7 +68,7 @@ inputbar {
 listview {
     background-color:               @al;
     padding:                        0px;
-    columns:                        2;
+    columns:                        1;
     lines:                          8;
     spacing:                        6px;
     cycle:                          true;
@@ -112,4 +112,9 @@ element selected {
 	border:							0px 0px 0px 0px;
     border-radius:                  0px;
     border-color:                  	@ac;
+}
+
+element-text, element-icon {
+	background-color: inherit;
+	text-color: inherit;
 }
