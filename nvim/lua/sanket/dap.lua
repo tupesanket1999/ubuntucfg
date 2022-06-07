@@ -106,13 +106,22 @@ dap.configurations.go = {
     program = "./${relativeFileDirname}/",
     cwd = "/home/sanket/gitlocal/uptycs/cloud",
     mode = "debug",
-    env = "{'DEBUG_CQ_CONSUMER':true,'DEBUG':true}"
   },
   {
     type = "go",
     name = "Debug file",
     request = "launch",
     program = "${file}"
+  },
+  {
+    type = "go",
+    name = "Debug uptycs cloudquery",
+    request = "launch",
+    program = "/home/sanket/gitlocal/uptycs-cloudquery/cmd/cloudquery/",
+    cwd = "/home/sanket/gitlocal/uptycs-cloudquery/",
+    mode = "debug",
+    args = {'--socket','/home/sanket/.osquery/shell.em','--verbose','true'},
+    env = "{'CLOUDQUERY_EXT_HOME':/home/sanket/gitlocal/uptycs-cloudquery,'DEBUG':true}"
   },
   {
     type = "go",

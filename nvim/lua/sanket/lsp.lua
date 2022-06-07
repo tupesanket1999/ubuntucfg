@@ -1,5 +1,10 @@
 local nvim_lsp = require("lspconfig")
 
+--LSP FOR ESLINT
+--
+--
+nvim_lsp.eslint.setup {}
+
 local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
@@ -22,7 +27,7 @@ local function keymaps(buf_set_keymap, opts)
   --buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", opts)
+  buf_set_keymap("n", "<space>q", "<cmd>Telescope diagnostics<CR>", opts)
 end
 
 --LSP FOR TSSERVER
@@ -88,8 +93,6 @@ nvim_lsp.jsonls.setup {
   on_attach = on_attach
 }
 
-
-
 --LSP FOR GO LANG
 --
 --
@@ -108,20 +111,22 @@ nvim_lsp.gopls.setup {
   on_attach = on_attach
 }
 
-
 --LSP FOR CPP
 --
 --
 nvim_lsp.clangd.setup {on_attach = on_attach}
 
-
 --LSP FOR LUA
 --
 --
-nvim_lsp.sumneko_lua.setup {on_attach = on_attach}
+nvim_lsp.sumneko_lua.setup {
+  on_attach = on_attach
+}
 
-
---LSP FOR ESLINT
---
---
-nvim_lsp.eslint.setup {}
+--Enable (broadcasting) snippet capability for completion
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+nvim_lsp.html.setup {
+  capabilities = capabilities,
+  on_attach = on_attach
+}

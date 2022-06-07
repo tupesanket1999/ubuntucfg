@@ -6,9 +6,7 @@ local function map(mode, combo, mapping, opts)
   vim.api.nvim_set_keymap(mode, combo, mapping, options)
 end
 
-map("i", "jj", "<Esc>")
-map("n", "zz", ":w<CR>", {noremap = true})
-map("n", "zq", ":bp<bar>sp<bar>bn<bar>bd<CR>", {noremap = true})
+map("i", "jj", "<Esc>") map("n", "zz", ":w<CR>", {noremap = true}) map("n", "zq", ":bp<bar>sp<bar>bn<bar>bd<CR>", {noremap = true})
 map("n", "<space>h", ":wincmd h<CR>", {noremap = true})
 map("n", "<space>j", ":wincmd j<CR>", {noremap = true})
 map("n", "<space>k", ":wincmd k<CR>", {noremap = true})
@@ -51,6 +49,8 @@ map("n", "<C-n>", ":NvimTreeToggle<CR>")
 map("v", "<space>y", '"+y')
 map("n", "<space>git", ":Neogit<CR>")
 
+map("n", "<C-s>", ":SymbolsOutline<CR>")
+
 --"DEBUGGER
 map("n", "<F5>", ":lua require'dap'.continue()<CR>", {silent = true})
 map("n", "<space>dd", ":lua require('dap').continue()<CR>", {silent = true})
@@ -69,3 +69,13 @@ map("n", "<space>dr", ":lua require'dap'.repl.open()<CR>", {silent = true})
 map("n", "<space>dl", ":lua require'dap'.repl.run_last()<CR>`", {silent = true})
 map("n", "<space>dh", ':lua require"dap.ui.widgets".hover()<CR>', {silent = true})
 map("n", "<space>du", ':lua require("dapui").toggle()<CR>', {silent = true})
+
+
+vim.cmd([[
+inoremap <C-Up> <Esc>:m .-2<CR>==gi
+nnoremap <C-Down> :m .+1<CR>==
+nnoremap <C-Up> :m .-2<CR>==
+vnoremap <C-Down> :m '>+1<CR>gv=gv
+vnoremap <C-Up> :m '<-2<CR>gv=gv
+inoremap <C-Down> <Esc>:m .+1<CR>==gi
+]])

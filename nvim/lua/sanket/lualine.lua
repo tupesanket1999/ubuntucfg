@@ -14,7 +14,6 @@ require("bufferline").setup {
     },
     modified_selected = {
       guibg = "#076678",
-      --guifg = "#b16286"
     }
   }
 }

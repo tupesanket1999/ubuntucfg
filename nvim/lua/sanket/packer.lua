@@ -5,6 +5,8 @@ require("packer").startup(
     --"colorscheme
     --"
     use "morhetz/gruvbox"
+    use "EdenEast/nightfox.nvim"
+    use "sainnhe/everforest"
 
     --"telescope
     --"
@@ -22,6 +24,15 @@ require("packer").startup(
     use "windwp/nvim-autopairs"
     use "RRethy/vim-illuminate"
     use "mhartington/formatter.nvim"
+    use "liuchengxu/vista.vim"
+    use "simrat39/symbols-outline.nvim"
+    use {
+    "ThePrimeagen/refactoring.nvim",
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"nvim-treesitter/nvim-treesitter"}
+    }
+}
 
     --"utils
     --"
