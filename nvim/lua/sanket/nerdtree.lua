@@ -17,7 +17,6 @@ require "nvim-tree".setup {
   hijack_netrw = true,
   open_on_setup = false,
   ignore_ft_on_setup = {},
-  auto_close = true,
   hijack_cursor = true,
   update_cwd = true,
   update_to_buf_dir = {

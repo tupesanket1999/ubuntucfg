@@ -41,7 +41,7 @@ map("n", "<space>fc", "<cmd>lua require('telescope.builtin').command_history()<c
 map("n", "<space>fs", "<cmd>lua require('telescope.builtin').current_buffer_fuzzy_find()<cr>")
 map("n", "<space>ps", ':lua require(\'telescope.builtin\').grep_string({ search = vim.fn.input(" > ")})<CR>')
 map("n", "<space>gc", ":lua require('telescope.builtin').git_status()<CR>")
-map("n", "<space>gr", '<cmd>lua require"telescope.builtin.lsp".references()<CR>', {silent = true})
+map("n", "<space>gr", "<cmd>lua require('telescope.builtin').lsp_references()<CR>", {silent = true})
 map("n", "<space>cp", ":Telescope session-lens search_session<CR>", {noremap = true, silent = true})
 
 --"NERD TREE
