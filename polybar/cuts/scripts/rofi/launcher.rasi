@@ -113,3 +113,7 @@ element selected {
     border-radius:                  0px;
     border-color:                  	@ac;
 }
+element-text, element-icon {
+	background-color: @al;
+	text-color: inherit;
+}
