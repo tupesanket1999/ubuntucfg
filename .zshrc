@@ -9,38 +9,37 @@ fi
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-
-export ZSH="/home/sanket/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+#ZSH_THEME="robbyrussell"
 ZSH_THEME="powerlevel10k/powerlevel10k"
-#ZSH_THEME="dracula"
 POWERLEVEL10K_MODE="nerdfont-complete"
-ZSH_DISABLE_COMPFIX=true
 
 source ~/.zplug/init.zsh
 zplug "b4b4r07/enhancd", use:init.sh
-alias q='exit'
-alias v='nvim'
-alias t='terminator'
-# Install plugins if there are plugins that have not been installed
-
-# Then, source plugins and add commands to $PATH
 zplug load
+
 copy(){
     xsel -b < ./$1
 }
-#13
-export PATH=$PATH:/usr/local/go/bin
-#15
-#export PATH=$PATH:/home/sanket/go/bin
 
-export CLOUDQUERY_EXT_HOME=/home/sanket/gitlocal/uptycs-cloudquery/extension
+#eval `ssh-agent -s`
 
-alias config='/usr/bin/git --git-dir=/home/sanket/.cfg/ --work-tree=/home/sanket'
+alias q='exit'
+alias v='nvim'
+alias t='terminator'
+alias python='python3'
+alias update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean'
+alias install='sudo apt install'
+alias execpg='docker exec -it postgres psql -U postgres'
+
+export UPTYCS_PM2_FILE="/home/sanket/gitlocal/query_pm2.json"
+export PATH=$PATH:/home/sanket/.local/bin
+
 run(){
        case $1 in 
            *.cpp)   g++ -std=c++17 -Wshadow -Wall $1 -o a.out -g -fsanitize=address -fsanitize=undefined -D_GLIBCXX_DEBUG  && time ./a.out ;;
@@ -56,18 +55,15 @@ frun(){
        esac 
 }
 
-if [[ $1 == eval ]]
-then
-    "neofetch"
-set --
-fi
 
-###UPTYCS
+##UPTYCS
 export UPTYCS_HOME="/home/sanket/gitlocal/uptycs"
 export UPTYCS_WEB_HOME="/home/sanket/gitlocal/uptycs-web"
 export UPTYCS_USER="stupe"
 export ARTIFACTS_HOME="/home/sanket/gitlocal/artifacts"
 export UPTYCS_HELP_HOME="/home/sanket/gitlocal/uptycs-help"
+export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:/home/sanket/go/bin
 
 alias relogindocker='$(aws ecr get-login --region us-east-1 --profile uptycs-dev --no-include-email --registry-ids 267292272963)'
 alias reloginecr='aws-google-auth -p uptycs-dev -k'
@@ -85,14 +81,13 @@ alias reloginecr='aws-google-auth -p uptycs-dev -k'
 # Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to automatically update without prompting.
-# DISABLE_UPDATE_PROMPT="true"
+# Uncomment one of the following lines to change the auto-update behavior
+# zstyle ':omz:update' mode disabled  # disable automatic updates
+# zstyle ':omz:update' mode auto      # update automatically without asking
+# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+# zstyle ':omz:update' frequency 13
 
 # Uncomment the following line if pasting URLs and other text is messed up.
 # DISABLE_MAGIC_FUNCTIONS="true"
@@ -107,6 +102,9 @@ alias reloginecr='aws-google-auth -p uptycs-dev -k'
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
+# You can also set it to another string to have that shown instead of the default red dots.
+# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
+# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
 # COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
@@ -131,17 +129,13 @@ alias reloginecr='aws-google-auth -p uptycs-dev -k'
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-    git 
+    #git
     zsh-autosuggestions 
     zsh-syntax-highlighting
     zsh-peco-history
-)
-
-ENABLE_CORRECTION="false"
+  )
 
 source $ZSH/oh-my-zsh.sh
-
-
 
 # Enable highlighters
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
@@ -195,30 +189,17 @@ ZSH_HIGHLIGHT_STYLES[assign]=none
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#for i in {0..255}; do print -Pn "%K{$i}  %k%F{$i}${(l:3::0:)i}%f " ${${(M)$((i%6)):#3}:+$'\n'}; done
-#
-#
-
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
-
-findfiles(){
-    vim $(fzf)
-}
 findDir(){
     cd
 }
-findHist(){
-    cd
-}
-bindkey -s 'ff' 'findfiles \n'
-bindkey -s 'fj' '^r'
 bindkey -s 'fd' 'findDir \n'
-
+bindkey -s 'fj' '^r'
 export ZPLUG_HOME=~/.zplug
 export FZF_DEFAULT_OPTS='--height 40% --layout=reverse --border'
 export FZF_DEFAULT_COMMAND='rg --hidden --no-ignore --files'
 
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

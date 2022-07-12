@@ -10,38 +10,37 @@
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod1
-#set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
+#font pango:monospace 8
 font pango:DejaVu Sans Mono 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Start XDG autostart .desktop files using dex. See also
+# https://wiki.archlinux.org/index.php/XDG_Autostart
+exec --no-startup-id dex --autostart --environment i3
+
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec  --no-startup-id nm-applet &
+exec --no-startup-id nm-applet
 
 # Use pactl to adjust volume in PulseAudio.
-#set $refresh_i3status killall -SIGUSR1 i3blocks
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10%
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle 
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
-
-# Media player controls
-bindsym XF86AudioPlay exec playerctl play-pause
-bindsym XF86AudioPause exec playerctl pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+set $refresh_i3status killall -SIGUSR1 i3status
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
 # increase screen brightness
 bindsym XF86MonBrightnessUp exec  echo root | sudo -S brightnessctl s 5%+    
@@ -57,12 +56,13 @@ bindsym $mod+Return exec terminator
 bindsym $mod+Shift+q kill
 
 # start dmenu (a program launcher)
-#bindsym $mod+d exec --no-startup-id rofi -show  run -font "DejaVu Sans 10" 
-bindsym $mod+d exec --no-startup-id ~/.config/polybar/blocks/scripts/launcher.sh
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
+#bindsym $mod+d exec --no-startup-id dmenu_run
+bindsym $mod+d exec --no-startup-id ~/.config/polybar/cuts/scripts/launcher.sh
+# A more modern dmenu replacement is rofi:
+# bindcode $mod+40 exec "rofi -modi drun,run -show drun"
+# There also is i3-dmenu-desktop which only displays applications shipping a
+# .desktop file. It is a wrapper around dmenu, so you need that installed.
+# bindcode $mod+40 exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -89,7 +89,7 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+Shift + v split h
+bindsym $mod+Shift+v split h
 
 # split in vertical orientation
 bindsym $mod+v split v
@@ -127,41 +127,6 @@ set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
 
-workspace $ws1 gaps inner 2
-workspace $ws1 gaps outer 0
-
-workspace $ws2 gaps inner 0
-workspace $ws2 gaps outer 0
-
-workspace $ws5 gaps inner 2
-workspace $ws5 gaps outer 0
-
-workspace $ws6 gaps inner 2
-workspace $ws6 gaps outer 0
-
-
-workspace $ws7 gaps inner 2
-workspace $ws7 gaps outer 0
-
-
-workspace $ws8 gaps inner 2
-workspace $ws8 gaps outer 0
-
-
-workspace $ws9 gaps inner 2
-workspace $ws9 gaps outer 0
-
-
-workspace $ws10 gaps inner 2
-workspace $ws10 gaps outer 0
-
-workspace $ws3 gaps inner 2
-workspace $ws3 gaps outer 0
-
-workspace $ws4 gaps inner 2
-workspace $ws4 gaps outer 0
-
-
 # switch to workspace
 bindsym $mod+1 workspace number $ws1
 bindsym $mod+2 workspace number $ws2
@@ -187,18 +152,13 @@ bindsym $mod+Shift+9 move container to workspace number $ws9
 bindsym $mod+Shift+0 move container to workspace number $ws10
 
 assign [class="Slack"] $ws10
-assign [class="Whatsapp-for-linux"] $ws9
-
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
 bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
-#
-#
 #bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
-#bindsym $mod+Shift+h exec "polybar-msg cmd hide"
-#bindsym $mod+Shift+s exec "polybar-msg cmd show"
+bindsym $mod+Shift+e exec ~/.config/polybar/cuts/scripts/powermenu.sh
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
@@ -226,80 +186,28 @@ mode "resize" {
 }
 
 bindsym $mod+r mode "resize"
+for_window [class="^.*"] border pixel 1
 
-for_window [class="^.*"] border pixel 1                                         
-#gaps inner 4                                                  
-#gaps outer 2 
-                                                                                 
-new_window 1pixel                                                               
-                                                                                 
-hide_edge_borders both                                                          
-                                                                                 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
+#bar {
+        #status_command i3status
+#}
 
-#exec_always --no-startup-id $HOME/.config/polybar/shapes/launch.sh
-
-set $mode_gaps Gaps: (o) outer, (i) inner
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-
-
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-
-#UTILS
-exec_always --no-startup-id  ~/.config/polybar/launch.sh --blocks
-bindsym $mod+Shift+e exec ~/.config/polybar/blocks/scripts/powermenu.sh
 bindsym Print exec gnome-screenshot -i
 bindsym $mod+u scratchpad show;
 bindsym $mod+Shift+minus move scratchpad
-exec_always --no-startup-id picom --config ~/.config/picom.conf -b
-exec hsetroot -solid black
-
-
-#MONITOR
-exec --no-startup-id xrandr --output HDMI-1 --set "Broadcast RGB" "Full"
 bindsym $mod+p move workspace to output right
-exec --no-startup-id sleep 5 && ~/.config/i3/scripts/horizontal.sh
 
-#STARTUP APPS
-exec whatsapp-for-linux
+# Startup apps
+exec_always --no-startup-id picom --config ~/.config/picom.conf --experimental-backends -b
+exec --no-startup-id ~/.config/i3/scripts/alternating_layouts.py
 exec --no-startup-id ~/.config/i3/scripts/fast_cursor.sh
-exec --no-startup-id dunst 
-exec_always --no-startup-id  ~/.config/i3/scripts/alternating_layouts.py
-exec --no-startup-id ~/.config/i3/scripts/inti_work.sh
+exec_always --no-startup-id  ~/.config/polybar/launch.sh --blocks
+exec feh --bg-scale ~/.config/i3/walls/city.jpg
+exec --no-startup-id sleep 1 && ~/.config/i3/scripts/horizontal.sh
+exec --no-startup-id xrandr --output HDMI-1 --set "Broadcast RGB" "Full"
+exec --no-startup-id diodon
+#exec hsetroot -solid black
 exec redshift
 exec slack
