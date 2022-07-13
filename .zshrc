@@ -4,6 +4,16 @@
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
+#ps -aux | grep alternating_layouts.py 
+#
+#kill `ps -aux | grep alternating_layouts.py | awk '{print $2}'` && /home/sanket/.config/i3/scripts/alternating_layouts.py
+VAR1=$(ps -aux | grep alternating_layouts.py | awk '{print $12; exit}')
+VAR2="/home/sanket/.config/i3/scripts/alternating_layouts.py"
+if [[ "$VAR1" != "$VAR2" ]]
+then
+  /home/sanket/.config/i3/scripts/alternating_layouts.py & 
+  disown
+fi
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -36,6 +46,11 @@ alias python='python3'
 alias update='sudo apt update && sudo apt upgrade && sudo apt autoremove && sudo apt autoclean'
 alias install='sudo apt install'
 alias execpg='docker exec -it postgres psql -U postgres'
+alias sdev='/home/sanket/gitlocal/uptycs/cloud/utilities/startDev.sh && /home/sanket/gitlocal/uptycs/cloud/utilities/startDev.sh'
+
+alias ss='/home/sanket/gitlocal/uptycs/cloud/scripts/status'
+alias sr='/home/sanket/gitlocal/uptycs/cloud/scripts/reload'
+alias st='/home/sanket/gitlocal/uptycs/cloud/scripts/stop'
 
 export UPTYCS_PM2_FILE="/home/sanket/gitlocal/query_pm2.json"
 export PATH=$PATH:/home/sanket/.local/bin
