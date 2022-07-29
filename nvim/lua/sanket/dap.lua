@@ -1,6 +1,7 @@
 local dap = require("dap")
 require("dapui").setup()
 require("nvim-dap-virtual-text").setup()
+require("dap-go").setup()
 
 dap.defaults.fallback.terminal_win_cmd = "belowright 100vsplit new"
 

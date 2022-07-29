@@ -5,10 +5,10 @@ local nvim_lsp = require("lspconfig")
 --
 nvim_lsp.eslint.setup {}
 
-local signs = {Error = " ", Warn = " ", Hint = " ", Info = " "}
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
-  vim.fn.sign_define(hl, {text = icon, texthl = hl, numhl = hl})
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
 local function keymaps(buf_set_keymap, opts)
@@ -27,22 +27,27 @@ local function keymaps(buf_set_keymap, opts)
   --buf_set_keymap('n', '<space>e', '<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>', opts)
   buf_set_keymap("n", "[d", "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", opts)
   buf_set_keymap("n", "]d", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", opts)
-  buf_set_keymap("n", "<space>q", "<cmd>Telescope diagnostics<CR>", opts)
+  buf_set_keymap("n", "<space>wd", "<cmd>Telescope diagnostics<CR>", opts)
 end
 
 --LSP FOR TSSERVER
 --
 --
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.tsserver.setup {
+  capabilities = capabilities,
   on_attach = function(client, bufnr)
     local function buf_set_keymap(...)
       vim.api.nvim_buf_set_keymap(bufnr, ...)
     end
+
     local function buf_set_option(...)
       vim.api.nvim_buf_set_option(bufnr, ...)
     end
+
     -- Mappings.
-    local opts = {noremap = true, silent = true}
+    local opts = { noremap = true, silent = true }
     --NOT USING INBUIT FORMATTER
     --vim.cmd('autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()')
     vim.cmd("autocmd BufWritePre <buffer> EslintFixAll")
@@ -52,7 +57,7 @@ nvim_lsp.tsserver.setup {
       autocmd!
       autocmd BufWritePost *.js,*.tsx,*.ts FormatWrite
     augroup END
-  ]],
+  ]]   ,
       true
     )
     keymaps(buf_set_keymap, opts)
@@ -66,27 +71,31 @@ local on_attach = function(client, bufnr)
   local function buf_set_keymap(...)
     vim.api.nvim_buf_set_keymap(bufnr, ...)
   end
+
   local function buf_set_option(...)
     vim.api.nvim_buf_set_option(bufnr, ...)
   end
+
   -- Mappings.
-  local opts = {noremap = true, silent = true}
-  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting()")
+  local opts = { noremap = true, silent = true }
+  vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
   keymaps(buf_set_keymap, opts)
-  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.formatting()<CR>", opts)
+  buf_set_keymap("n", "<space>f", "<cmd>lua vim.lsp.buf.format()<CR>", opts)
 end
 
 --LSP FOR JSON
 --
 --
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
 capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 nvim_lsp.jsonls.setup {
   capabilities = capabilities,
   commands = {
     Format = {
       function()
-        vim.lsp.buf.range_formatting({}, {0, 0}, {vim.fn.line("$"), 0})
+        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line("$"), 0 })
       end
     }
   },
@@ -96,8 +105,11 @@ nvim_lsp.jsonls.setup {
 --LSP FOR GO LANG
 --
 --
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.gopls.setup {
-  cmd = {"gopls", "serve"},
+  capabilities = capabilities,
+  cmd = { "gopls", "serve" },
   settings = {
     gopls = {
       experimentalPostfixCompletions = true,
@@ -108,23 +120,34 @@ nvim_lsp.gopls.setup {
       staticcheck = true
     }
   },
-  on_attach = on_attach
+  on_attach = on_attach,
+  init_options = {
+    usePlaceholders = true,
+  }
 }
 
 --LSP FOR CPP
 --
 --
-nvim_lsp.clangd.setup {on_attach = on_attach}
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+nvim_lsp.clangd.setup { on_attach = on_attach,
+  capabilities = capabilities,
+}
 
 --LSP FOR LUA
 --
 --
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.sumneko_lua.setup {
-  on_attach = on_attach
+  on_attach = on_attach,
+  capabilities = capabilities,
 }
 
 --Enable (broadcasting) snippet capability for completion
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+--local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()) --nvim-cmp
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 nvim_lsp.html.setup {
   capabilities = capabilities,

@@ -1,5 +1,7 @@
 require("telescope").setup {
-  defaults = {file_ignore_patterns = {"node_modules", "undodir"}},
+  defaults = {
+    file_ignore_patterns = { "node_modules", "undodir" }
+  },
   extensions = {
     fzf = {
       fuzzy = true, -- false will only do exact matching
@@ -16,8 +18,8 @@ require("telescope").load_extension("session-lens")
 require("telescope").load_extension("refactoring")
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true }
+  "v",
+  "<leader>rr",
+  "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+  { noremap = true }
 )

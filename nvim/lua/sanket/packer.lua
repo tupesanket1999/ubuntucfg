@@ -4,9 +4,8 @@ require("packer").startup(
 
     --"colorscheme
     --"
-    use "morhetz/gruvbox"
-    use "EdenEast/nightfox.nvim"
-    use "sainnhe/everforest"
+    --use "morhetz/gruvbox"
+    use "gruvbox-community/gruvbox"
 
     --"telescope
     --"
@@ -14,25 +13,45 @@ require("packer").startup(
     use "nvim-lua/plenary.nvim"
     use "nvim-telescope/telescope.nvim"
     use "kyazdani42/nvim-web-devicons"
-    use {"nvim-telescope/telescope-fzf-native.nvim", run = "make"}
+    --use { "nvim-telescope/telescope-fzf-native.nvim", run = "make" }
+    use { 'nvim-telescope/telescope-fzf-native.nvim',
+      run = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' }
 
     --"lsp
     --"
     use "neovim/nvim-lspconfig"
-    use {"nvim-treesitter/nvim-treesitter", run = ":TSUpdate"}
-    use "hrsh7th/nvim-compe"
-    use "windwp/nvim-autopairs"
+    use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
+    use 'nvim-treesitter/nvim-treesitter-context'
+
+    --use "hrsh7th/nvim-compe"
+    use 'hrsh7th/cmp-nvim-lsp'
+    use 'hrsh7th/cmp-buffer'
+    use 'hrsh7th/cmp-calc'
+    use 'hrsh7th/cmp-path'
+    use 'hrsh7th/cmp-cmdline'
+    use 'hrsh7th/nvim-cmp'
+    use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    use("saadparwaiz1/cmp_luasnip")
+    use("L3MON4D3/LuaSnip")
+    use "rafamadriz/friendly-snippets"
+    use 'hrsh7th/cmp-nvim-lsp-signature-help'
+    use('onsails/lspkind.nvim')
+
+    use {
+      "windwp/nvim-autopairs",
+      config = function() require("nvim-autopairs").setup {} end
+    }
     use "RRethy/vim-illuminate"
     use "mhartington/formatter.nvim"
     use "liuchengxu/vista.vim"
     use "simrat39/symbols-outline.nvim"
     use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-        {"nvim-lua/plenary.nvim"},
-        {"nvim-treesitter/nvim-treesitter"}
+      "ThePrimeagen/refactoring.nvim",
+      requires = {
+        { "nvim-lua/plenary.nvim" },
+        { "nvim-treesitter/nvim-treesitter" }
+      }
     }
-}
 
     --"utils
     --"
@@ -45,7 +64,7 @@ require("packer").startup(
     use "lewis6991/impatient.nvim"
     use {
       "rmagatti/session-lens",
-      requires = {"rmagatti/auto-session", "nvim-telescope/telescope.nvim"},
+      requires = { "rmagatti/auto-session", "nvim-telescope/telescope.nvim" },
       config = function()
         require("session-lens").setup({})
       end
@@ -56,6 +75,7 @@ require("packer").startup(
     use "mfussenegger/nvim-dap"
     use "nvim-telescope/telescope-dap.nvim"
     use "rcarriga/nvim-dap-ui"
+    use 'leoluz/nvim-dap-go'
     use "theHamsta/nvim-dap-virtual-text"
 
     --"git
@@ -67,6 +87,7 @@ require("packer").startup(
     --"powerline
     --"
     use "hoob3rt/lualine.nvim"
+    use "b0o/incline.nvim"
     use "akinsho/nvim-bufferline.lua"
   end
 )

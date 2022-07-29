@@ -18,7 +18,7 @@ require "nvim-tree".setup {
   open_on_setup = false,
   ignore_ft_on_setup = {},
   hijack_cursor = true,
-  --update_cwd = true,
+  update_cwd = true,
   --update_to_buf_dir = {
     --enable = true,
     --auto_open = true
