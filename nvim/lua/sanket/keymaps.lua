@@ -79,5 +79,5 @@ map("i", "<C-[>", "<Esc>:m .+1<CR>==gi", { silent = true })
 map("v", "<C-]>", ":m '<-2<CR>gv=gv", { silent = true })
 map("v", "<C-[>", ":m '>+1<CR>gv=gv", { silent = true })
 
-map("n", "<C-[>", "<cmd>cnext<CR>zz", { noremap = true })
-map("n", "<C-]>", "<cmd>cprev<CR>zz", { noremap = true })
+--map("n", "<C-[>", "<cmd>cnext<CR>zz", { noremap = true })
+--map("n", "<C-]>", "<cmd>cprev<CR>zz", { noremap = true })

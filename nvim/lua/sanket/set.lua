@@ -40,6 +40,6 @@ set.completeopt = { "menu", "menuone", "noselect" }
 vim.g.mapleader = " "
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 set.laststatus = 3
-set.hlsearch = false
 --set.winbar=str
 --set.winbar="%{%v:lua.require('lua.sanket.winbar').eval()%}"
+set.hlsearch = false

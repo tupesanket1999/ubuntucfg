@@ -20,7 +20,7 @@ require "nvim-tree".setup {
   hijack_cursor = true,
   update_cwd = true,
   --update_to_buf_dir = {
-    --enable = true,
-    --auto_open = true
+  --enable = true,
+  --auto_open = true
   --}
 }

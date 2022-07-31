@@ -6,6 +6,7 @@ require("packer").startup(
     --"
     --use "morhetz/gruvbox"
     use "gruvbox-community/gruvbox"
+    use "folke/tokyonight.nvim"
 
     --"telescope
     --"
@@ -22,6 +23,18 @@ require("packer").startup(
     use "neovim/nvim-lspconfig"
     use { "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }
     use 'nvim-treesitter/nvim-treesitter-context'
+    use({
+      "glepnir/lspsaga.nvim",
+      branch = "main",
+      config = function()
+        local saga = require("lspsaga")
+
+        saga.init_lsp_saga({
+          -- your configuration
+        })
+      end,
+    })
+
 
     --use "hrsh7th/nvim-compe"
     use 'hrsh7th/cmp-nvim-lsp'
@@ -88,6 +101,7 @@ require("packer").startup(
     --"
     use "hoob3rt/lualine.nvim"
     use "b0o/incline.nvim"
-    use "akinsho/nvim-bufferline.lua"
+    -- using packer.nvim
+    use { 'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons' }
   end
 )
