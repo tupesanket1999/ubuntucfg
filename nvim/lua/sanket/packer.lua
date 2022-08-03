@@ -26,13 +26,6 @@ require("packer").startup(
     use({
       "glepnir/lspsaga.nvim",
       branch = "main",
-      config = function()
-        local saga = require("lspsaga")
-
-        saga.init_lsp_saga({
-          -- your configuration
-        })
-      end,
     })
 
 
@@ -43,7 +36,7 @@ require("packer").startup(
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
-    use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    --use("tzachar/cmp-tabnine", { run = "./install.sh" })
     use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/LuaSnip")
     use "rafamadriz/friendly-snippets"
@@ -87,7 +80,7 @@ require("packer").startup(
     --"
     use "mfussenegger/nvim-dap"
     use "nvim-telescope/telescope-dap.nvim"
-    use "rcarriga/nvim-dap-ui"
+    use { "rcarriga/nvim-dap-ui", requires = { "mfussenegger/nvim-dap" } }
     use 'leoluz/nvim-dap-go'
     use "theHamsta/nvim-dap-virtual-text"
 

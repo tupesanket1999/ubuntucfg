@@ -11,7 +11,7 @@ require("bufferline").setup {
     end,
     show_close_icon = false,
     separator_style = { '', '' },
-    indicator_icon = ">>>",
+    indicator_icon = ">>>  ",
     show_buffer_close_icons = true,
     color_icons = true
     --indicator_icon = ""
@@ -87,6 +87,14 @@ custom_ayu.visual.a.bg = "#ff9f00" -- rgb colors are supported
 require "lualine".setup {
   options = {
     --theme = custom_ayu
-    theme = 'tokyonight'
-  }
+    theme = 'tokyonight',
+  },
+  sections = {
+    lualine_a = { 'mode' },
+    lualine_b = { 'branch', 'diff', 'diagnostics' },
+    lualine_c = { 'filename' },
+    lualine_x = { 'encoding', 'fileformat', 'filetype' },
+    lualine_y = { 'progress' },
+    lualine_z = { 'location' }
+  },
 }

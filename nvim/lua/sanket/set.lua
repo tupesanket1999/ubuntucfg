@@ -1,4 +1,5 @@
 local set = vim.opt
+set.hlsearch = false
 set.termguicolors = true
 set.pumheight = 10
 set.guicursor = ""
@@ -24,7 +25,7 @@ set.showmode = false
 --set isfname+=@-@
 --" set ls=0
 --" Give more space for displaying messages.
-set.cmdheight = 0
+set.cmdheight = 1
 --" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
 --" delays and poor user experience.
 set.updatetime = 50
@@ -42,4 +43,3 @@ vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,
 set.laststatus = 3
 --set.winbar=str
 --set.winbar="%{%v:lua.require('lua.sanket.winbar').eval()%}"
-set.hlsearch = false

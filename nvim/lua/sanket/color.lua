@@ -64,3 +64,7 @@ hl("LineNr", {
 --hl("Function", {
 --fg = bold
 --})
+require 'lspsaga'.init_lsp_saga({
+  saga_winblend = 100,
+  border_style = "single",
+})

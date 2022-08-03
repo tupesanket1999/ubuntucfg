@@ -69,7 +69,7 @@ map(
 )
 map("n", "<space>dr", ":lua require'dap'.repl.open()<CR>", { silent = true })
 map("n", "<space>dl", ":lua require'dap'.repl.run_last()<CR>`", { silent = true })
-map("n", "<space>dh", ':lua require"dap.ui.widgets".hover()<CR>', { silent = true })
+map("n", "<space>dh", ':lua require("dapui").eval()<CR>', { silent = true })
 map("n", "<space>du", ':lua require("dapui").toggle()<CR>', { silent = true })
 
 map("i", "<C-]>", "<Esc>:m .-2<CR>==gi", { silent = true })
