@@ -36,7 +36,7 @@ require("packer").startup(
     use 'hrsh7th/cmp-path'
     use 'hrsh7th/cmp-cmdline'
     use 'hrsh7th/nvim-cmp'
-    --use("tzachar/cmp-tabnine", { run = "./install.sh" })
+    use("tzachar/cmp-tabnine", { run = "./install.sh" })
     use("saadparwaiz1/cmp_luasnip")
     use("L3MON4D3/LuaSnip")
     use "rafamadriz/friendly-snippets"

@@ -10,6 +10,18 @@ for type, icon in pairs(signs) do
   local hl = "DiagnosticSign" .. type
   vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
+require 'lspsaga'.init_lsp_saga({
+  saga_winblend = 100,
+  border_style = "single",
+  code_action_icon = "",
+  code_action_lightbulb = {
+    enable = false,
+    sign = false,
+    enable_in_insert = false,
+    sign_priority = 20,
+    virtual_text = false,
+  },
+})
 
 local function keymaps(buf_set_keymap, opts)
   buf_set_keymap("n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)

@@ -18,7 +18,7 @@ require("bufferline").setup {
   },
   highlights = {
     buffer_selected = {
-      gui = "bold"
+      gui = "bold",
     },
     diagnostic_selected = {
       gui = "bold"
@@ -48,13 +48,13 @@ require("bufferline").setup {
       gui = "bold",
     },
     pick_selected = {
-      gui = "bold"
+      gui = "bold",
     },
     pick_visible = {
-      gui = "bold"
+      gui = "bold",
     },
     pick = {
-      gui = "bold"
+      gui = "bold",
     },
     indicator_selected = {
       guifg = '#ffffff',
