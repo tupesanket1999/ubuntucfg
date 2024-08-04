@@ -1,73 +1,64 @@
---"Color Scheme
---vim.g["gruvbox_invert_selection"] = "0"
---vim.g["gruvbox_contrast_dark"] = "hard"
---vim.o.background = "dark"
---vim.cmd([[
---colorscheme gruvbox
---highlight clear SignColumn)
+require('rose-pine').setup({
+    variant = "main", -- auto, main, moon, or dawn
+    dark_variant = "main", -- main, moon, or dawn
+    dim_inactive_windows = false,
+    extend_background_behind_borders = true,
 
-----"transparent
---vim.cmd([[hi Normal guibg=NONE ctermbg=NONE]])
---vim.cmd([[hi VertSplit guibg=NONE guifg=#141414]])
+    styles = {
+        bold = true,
+        italic = false,
+        transparency = true,
+    },
 
---vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer", "TelescopePrompt" }
---vim.g.tokyonight_hide_inactive_statusline = true
-vim.g.tokyonight_style = "night"
-vim.g.tokyonight_italic_functions = false
-vim.g.tokyonight_transparent = true
-vim.g.tokyonight_transparent_sidebar = true
-vim.g.tokyonight_dark_float = false
-vim.g.tokyonight_italic_keywords = false
-vim.g.tokyonight_lualine_bold = true
+    groups = {
+        border = "muted",
+        link = "iris",
+        panel = "surface",
 
--- Change the "hint" color to the "orange" color, and make the "error" color bright red
---
+        error = "love",
+        hint = "iris",
+        info = "foam",
+        warn = "gold",
 
---vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+        git_add = "foam",
+        git_change = "rose",
+        git_delete = "love",
+        git_dirty = "rose",
+        git_ignore = "muted",
+        git_merge = "iris",
+        git_rename = "pine",
+        git_stage = "iris",
+        git_text = "rose",
+        git_untracked = "subtle",
 
-vim.cmd([[
-colorscheme tokyonight
-]])
+        headings = {
+            h1 = "iris",
+            h2 = "foam",
+            h3 = "rose",
+            h4 = "gold",
+            h5 = "pine",
+            h6 = "foam",
+        },
+        -- Alternatively, set all headings at once.
+        -- headings = "subtle",
+    },
 
-local hl = function(thing, opts)
-  vim.api.nvim_set_hl(0, thing, opts)
-end
------- Load the colorscheme
+    highlight_groups = {
+        -- Comment = { fg = "foam" },
+        -- VertSplit = { fg = "muted", bg = "muted" },
+    },
 
-
-hl("SignColumn", {
-  bg = "none",
+    before_highlight = function(group, highlight, palette)
+        -- Disable all undercurls
+        -- if highlight.undercurl then
+        --     highlight.undercurl = false
+        -- end
+        --
+        -- Change palette colour
+        -- if highlight.fg == palette.pine then
+        --     highlight.fg = palette.foam
+        -- end
+    end,
 })
 
-hl("ColorColumn", {
-  ctermbg = 0,
-  bg = "#555555",
-})
-
-hl("CursorLineNR", {
-  bg = "None"
-})
-
-hl("Normal", {
-  bg = "none"
-})
-
-hl("LineNr", {
-  fg = "#5eacd3"
-})
-
-hl("TelescopeNormal", {
-  bg = "NONE",
-})
-
-hl("TelescopeBorder", {
-  fg = "#3d59a1"
-})
-
-hl("Function", { fg = "#7aa2f7", bold = true })
-
-hl("TreesitterContext", { bg = "#33467C" })
-
-hl("BufferLineFill", { bg = "NONE" })
-
---hl("BufferLineIndicatorSelected", { fg = "#5eacd3" })
+vim.cmd('colorscheme rose-pine')

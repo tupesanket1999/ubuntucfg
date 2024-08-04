@@ -1,14 +1,14 @@
 local function map(mode, combo, mapping, opts)
-  local options = { noremap = true }
-  if opts then
-    options = vim.tbl_extend("force", options, opts)
-  end
-  vim.api.nvim_set_keymap(mode, combo, mapping, options)
+    local options = { noremap = true }
+    if opts then
+        options = vim.tbl_extend("force", options, opts)
+    end
+    vim.api.nvim_set_keymap(mode, combo, mapping, options)
 end
 
 map("i", "jj", "<Esc>")
 map("n", "zz", ":w<CR>", { noremap = true })
-map("n", "zq", ":bp<bar>sp<bar>bn<bar>bd<CR>", { noremap = true })
+map("n", "<space>q", ":bp<bar>sp<bar>bn<bar>bd!<CR>", { noremap = true })
 map("n", "<space>h", ":wincmd h<CR>", { noremap = true })
 map("n", "<space>j", ":wincmd j<CR>", { noremap = true })
 map("n", "<space>k", ":wincmd k<CR>", { noremap = true })
@@ -22,6 +22,7 @@ map("n", "<C-w>v", ":belowright vsplit<CR>", { noremap = true })
 map("n", "<space>t", ":terminal<CR>", { noremap = true })
 map("n", "<space>u", ":UndotreeToggle<CR>", { noremap = true })
 map("n", "<space>bda", ":%bd<CR>", { noremap = true })
+
 
 --"TERMINAL
 map("t", "<Esc>", "<C-\\><C-n>")
@@ -47,6 +48,7 @@ map("n", "<space>git", ":Neogit<CR>")
 map("n", "<C-s>", ":SymbolsOutline<CR>")
 
 --"DEBUGGER
+map('n', '<F3>', ":lua require('maximize').toggle()<CR>")
 map("n", "<F5>", ":lua require'dap'.continue()<CR>", { silent = true })
 map("n", "<space>dd", ":lua require('dap').continue()<CR>", { silent = true })
 map("n", "<F10>", ":lua require'dap'.step_over()<CR>", { silent = true })
@@ -54,22 +56,22 @@ map("n", "<F11>", ":lua require'dap'.step_into()<CR>", { silent = true })
 map("n", "<F12>", ":lua require'dap'.step_out()<CR>", { silent = true })
 map("n", "<space>b", ":lua require'dap'.toggle_breakpoint()<CR>", { silent = true })
 map("n", "<space>B", ":lua require'dap'.set_breakpoint(vim.fn.input('Breakpoint condition:'))<CR>", { silent = true })
-map(
-  "n",
-  "<space>dm",
-  ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
-  { silent = true }
-)
+map("n", "<space>dm", ":lua require'dap'.set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<CR>",
+    { silent = true })
 map("n", "<space>dr", ":lua require'dap'.repl.open()<CR>", { silent = true })
 map("n", "<space>dl", ":lua require'dap'.repl.run_last()<CR>`", { silent = true })
 map("n", "<space>dh", ':lua require("dapui").eval()<CR>', { silent = true })
 map("n", "<space>du", ':lua require("dapui").toggle()<CR>', { silent = true })
 
-map("i", "<C-]>", "<Esc>:m .-2<CR>==gi", { silent = true })
-map("i", "<C-[>", "<Esc>:m .+1<CR>==gi", { silent = true })
+map("x", "p", "P", { silent = true })
+
+map('n', "<leader>'", '<cmd>Telescope neoclip<cr>', { silent = true })
+
+--map("i", "<C-]>", "<Esc>:m .-2<CR>==gi", { silent = true })
+--map("i", "<C-[>", "<Esc>:m .+1<CR>==gi", { silent = true })
 --map("n", "<C-]>", ":m .-2<CR>==", { silent = true, noremap = true })
 --map("n", "<C-[>", "<cmd>cnext<CR>zz", { noremap = true })
 --map("n", "<C-]>", "<cmd>cprev<CR>zz", { noremap = true })
 --map("n", "<C-[>", ":m .+1<CR>==", { silent = true, noremap = true })
-map("v", "<C-]>", ":m '<-2<CR>gv=gv", { silent = true })
-map("v", "<C-[>", ":m '>+1<CR>gv=gv", { silent = true })
+--map("v", "<C-]>", ":m '<-2<CR>gv=gv", { silent = true })
+--map("v", "<C-[>", ":m '>+1<CR>gv=gv", { silent = true })

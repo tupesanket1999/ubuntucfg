@@ -1,2 +1,2 @@
-require('impatient')
 require("sanket")
+require('impatient')

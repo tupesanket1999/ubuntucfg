@@ -7,9 +7,9 @@ set.lazyredraw = true
 set.relativenumber = true
 set.hidden = true
 set.errorbells = false
-set.tabstop = 2
-set.softtabstop = 2
-set.shiftwidth = 2
+set.tabstop = 4
+set.softtabstop = 4
+set.shiftwidth = 4
 set.expandtab = true
 set.smartindent = true
 set.nu = true
@@ -31,7 +31,7 @@ set.cmdheight = 1
 set.updatetime = 50
 --" Don't pass messages to |ins-completion-menu|.
 set.shortmess:append("c")
-vim.wo.colorcolumn = "80"
+vim.wo.colorcolumn = "0"
 set.showtabline = 2
 set.completeopt = { "menu", "menuone", "noselect" }
 
@@ -41,5 +41,5 @@ set.completeopt = { "menu", "menuone", "noselect" }
 vim.g.mapleader = " "
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal"
 set.laststatus = 3
---set.winbar=str
---set.winbar="%{%v:lua.require('lua.sanket.winbar').eval()%}"
+--set.winbar = str
+--set.winbar = "%{%v:lua.require('lua.sanket.winbar').eval()%}"
