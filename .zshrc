@@ -177,7 +177,7 @@ ZSH_HIGHLIGHT_STYLES[double-quoted-argument]=fg=063
 ZSH_HIGHLIGHT_STYLES[dollar-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[back-double-quoted-argument]=fg=009
 ZSH_HIGHLIGHT_STYLES[assign]=none
-
+ZSH_AUTOSUGGEST_MANUAL_REBIND=t
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
