@@ -1,5 +1,5 @@
 require("sanket.set")
 require("sanket.packer")
-require("sanket.colors")
 require("sanket.lualine")
 require("sanket.nerdtree")
+require("sanket.colors")

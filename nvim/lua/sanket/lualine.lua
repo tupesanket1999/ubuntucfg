@@ -88,46 +88,31 @@
 --}
 
 
-local custom_ayu = require "lualine.themes.ayu_dark"
--- Change the background of lualine_c section for normal mode
---custom_ayu.normal.a.fg = '#ffffff' -- rgb colors are supported
-custom_ayu.normal.c.fg = "#ffffff" -- rgb colors are supported
-custom_ayu.normal.a.fg = "#ffffff" -- rgb colors are supported
-custom_ayu.insert.a.fg = "#ffffff" -- rgb colors are supported
-custom_ayu.visual.a.fg = "#ffffff" -- rgb colors are supported
-custom_ayu.visual.a.bg = "#ff9f00" -- rgb colors are supported
+--local custom_ayu = require "lualine.themes.ayu_dark"
+---- Change the background of lualine_c section for normal mode
+----custom_ayu.normal.a.fg = '#ffffff' -- rgb colors are supported
+--custom_ayu.normal.c.fg = "#ffffff" -- rgb colors are supported
+--custom_ayu.normal.a.fg = "#ffffff" -- rgb colors are supported
+--custom_ayu.insert.a.fg = "#ffffff" -- rgb colors are supported
+--custom_ayu.visual.a.fg = "#ffffff" -- rgb colors are supported
+--custom_ayu.visual.a.bg = "#ff9f00" -- rgb colors are supported
 
-require "lualine".setup {
-    options = {
-        theme = custom_ayu
-        --theme = 'tokyonight',
-    },
-    sections = {
-        lualine_a = { 'mode' },
-        lualine_b = { 'branch', 'diff', 'diagnostics' },
-        lualine_c = { 'filename' },
-        lualine_x = { 'encoding', 'fileformat', 'filetype' },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
-    },
-}
+--require "lualine".setup {
+--options = {
+--theme = custom_ayu
+----theme = 'tokyonight',
+--},
+--sections = {
+--lualine_a = { 'mode' },
+--lualine_b = { 'branch', 'diff', 'diagnostics' },
+--lualine_c = { 'filename' },
+--lualine_x = { 'encoding', 'fileformat', 'filetype' },
+--lualine_y = { 'progress' },
+--lualine_z = { 'location' }
+--},
+--}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+require "lualine".setup {}
 
 local get_hex = require('cokeline.hlgroups').get_hl_attr
 require('cokeline').setup({
